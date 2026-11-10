@@ -1,0 +1,16 @@
+<!--
+  Custom Wazuh rule for the Juice Shop lab.
+  Detects admin API user enumeration via GET /api/Users.
+  Place in /var/ossec/etc/rules/local_rules.xml on the Wazuh manager
+  and restart Wazuh.
+-->
+<group name="juice-shop,web_attack,">
+  <rule id="100001" level="8">
+    <if_sid>31100</if_sid>
+    <url>/api/Users</url>
+    <description>Juice Shop: possible admin API user enumeration (GET /api/Users).</description>
+    <mitre>
+      <id>T1005</id>
+    </mitre>
+  </rule>
+</group>

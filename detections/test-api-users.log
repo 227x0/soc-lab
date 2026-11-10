@@ -1,0 +1,2 @@
+# Test log line: run through wazuh-logtest or trigger from the agent's access.log
+192.168.100.20 - - [09/Nov/2026:22:38:00 +0000] "GET /api/Users HTTP/1.1" 200 1234 "-" "curl/7.88.1"
