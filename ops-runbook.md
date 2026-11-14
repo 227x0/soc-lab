@@ -53,6 +53,23 @@ The manager is configured to email alerts (`localhost` SMTP, local
 delivery). Queue is read via `/var/mail/u1` (`grep "Wazuh notification"`).
 This emulates the ticket queue L1 works from.
 
+## Clock sync
+
+Lab VMs drift after the host sleeps or VMs are paused (observed 2026-11-14:
+u1/u3 ran ~4 days behind, which broke `apt` — "Release file not valid
+yet" — and would silently corrupt log correlation in the SIEM).
+
+```bash
+timedatectl                          # check
+sudo timedatectl set-ntp true         # enable timesyncd
+# if it must be fixed right now (ntp on refuses manual set):
+sudo timedatectl set-ntp false
+sudo timedatectl set-time "<UTC time from host: date -u>"
+sudo timedatectl set-ntp true
+```
+
+Verify all three hosts agree within a minute before any timed exercise.
+
 ## Weekly
 
 - `docker compose restart` on u1 (memory hygiene),
