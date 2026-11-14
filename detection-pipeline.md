@@ -40,5 +40,6 @@ Kali ──HTTP/SSH──▶ u3 ──┬─▶ nginx access.log ─────
 
 - SSH brute-force → correlation rule 40112 (level 12), MITRE T1110.
 - nmap scans → ET signatures ("Possible Nmap User-Agent Observed"), rule 86601.
-- Web SQLi attempts → visible as raw nginx events; custom Wazuh rules for
-  SQLi patterns are on the detection-engineering roadmap.
+- Web SQLi attempts → stock rule **31164** "SQL injection attempt" (L6);
+  since SOC-2026-003 escalated by custom rule **100100** (L12, MITRE T1190)
+  in the manager's `local_rules.xml`. Verified with `wazuh-logtest`.

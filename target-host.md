@@ -27,8 +27,13 @@ and detected.
 - Log sources (`/var/ossec/etc/ossec.conf`):
   `/var/log/auth.log`, `/var/log/syslog`, `/var/log/dpkg.log`,
   nginx `access.log` + `error.log` (format `syslog` — the agent parses
-  nginx natively, there is **no** `nginx` log format), and Suricata
-  `eve.json` (format `json`).
+  nginx natively, there is **no** `nginx` log format), Suricata
+  `eve.json` (format `json`), and — since SOC-2026-003 —
+  `/var/log/audit/audit.log` (format `syslog`: the 4.14.10 logcollector
+  build on this host rejects both `auditd` and `audit_log`, verified
+  2026-11-14). Ships auditd `lab_exec`/`lab_identity`/`lab_nginx_cfg`/
+  `lab_ssh_keys`/`lab_webroot` events; rules in
+  `/etc/audit/rules.d/lab.rules`.
 
 ## Known good agent config note
 
