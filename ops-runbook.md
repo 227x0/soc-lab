@@ -25,13 +25,13 @@ docker exec single-node-wazuh.manager-1 /var/ossec/bin/wazuh-control status
 curl -k -s -m 60 -u admin:<password> https://localhost:9200/_cluster/health
 # yellow or green = ok
 
-# disk — the thing that killed us once
+# disk, the thing that killed us once
 df -h /
 ```
 
 ## Disk policy
 
-Two things fill this disk: the vulnerability-scanner feed (disabled —
+Two things fill this disk: the vulnerability-scanner feed (disabled,
 keep it that way) and the event queue ballooning when the indexer is down
 while agents keep talking. Container log rotation (`max-size: 50m`,
 `max-file: 3`) is in the compose file.
@@ -56,8 +56,8 @@ This emulates the ticket queue L1 works from.
 ## Clock sync
 
 Lab VMs drift after the host sleeps or VMs are paused (observed 2026-11-14:
-u1/u3 ran ~4 days behind, which broke `apt` — "Release file not valid
-yet" — and would silently corrupt log correlation in the SIEM).
+u1/u3 ran ~4 days behind, which broke `apt` ("Release file not valid
+yet") and would silently corrupt log correlation in the SIEM).
 
 ```bash
 timedatectl                          # check

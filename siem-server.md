@@ -2,7 +2,7 @@
 
 Wazuh 4.14 single-node deployment via the official `wazuh-docker` stack
 (branch `v4.14.0`), directory `~/wazuh-docker/single-node` on u1
-(Ubuntu Server 26.04, 6GB RAM, 4 vCPU, 30GB disk — grown from 10GB after
+(Ubuntu Server 26.04, 6GB RAM, 4 vCPU, 30GB disk, grown from 10GB after
 the disk-full incident, see lessons-learned.md).
 
 ## Services
@@ -18,7 +18,8 @@ the disk-full incident, see lessons-learned.md).
 - **Vulnerability-detection is disabled** in
   `config/wazuh_cluster/wazuh_manager.conf` (`<enabled>no</enabled>`).
   The scanner's feed download is multi-GB and filled the disk on first
-  install — the single most important hardening choice on a small lab.
+  install. That makes it the single most important hardening choice on a
+  small lab.
 - Docker images bundle a supported Ubuntu, so the host running 26.04
   (unsupported by native Wazuh packages) is irrelevant.
 - The stock `docker-compose.yml` already ships `restart: always` for all

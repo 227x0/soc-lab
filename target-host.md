@@ -7,7 +7,7 @@ and detected.
 
 ### Juice Shop (web target)
 
-- `bkimminich/juice-shop` in Docker, bound to `127.0.0.1:3000` only —
+- `bkimminich/juice-shop` in Docker, bound to `127.0.0.1:3000` only,
   unreachable directly from the network.
 - **nginx** reverse proxy on port 80 forwards to it and writes
   `access.log` / `error.log`. This is the detection point: every HTTP
@@ -26,9 +26,9 @@ and detected.
 - Manager: `192.168.100.22:1514/tcp`.
 - Log sources (`/var/ossec/etc/ossec.conf`):
   `/var/log/auth.log`, `/var/log/syslog`, `/var/log/dpkg.log`,
-  nginx `access.log` + `error.log` (format `syslog` — the agent parses
+  nginx `access.log` + `error.log` (format `syslog`: the agent parses
   nginx natively, there is **no** `nginx` log format), Suricata
-  `eve.json` (format `json`), and — since SOC-2026-003 —
+  `eve.json` (format `json`), and, since SOC-2026-003,
   `/var/log/audit/audit.log` (format `syslog`: the 4.14.10 logcollector
   build on this host rejects both `auditd` and `audit_log`, verified
   2026-11-14). Ships auditd `lab_exec`/`lab_identity`/`lab_nginx_cfg`/

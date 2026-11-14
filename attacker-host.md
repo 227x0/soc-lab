@@ -14,7 +14,7 @@ an autonomous "red team agent" run from here.
 ## Rules of engagement (self-imposed)
 
 - Only `u3` (192.168.100.24) is a target. The SIEM server `u1` is off
-  limits — killing the observer defeats the purpose of the lab.
+  limits. Killing the observer defeats the purpose of the lab.
 - Attack sessions are kept short. Long unattended attacker+target uptime
   with the dashboard open is what ballooned the event queue during the
   disk-full incident (see lessons-learned.md).

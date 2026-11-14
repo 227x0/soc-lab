@@ -34,17 +34,17 @@ side beyond what the host provides.
 
 Two independent layers, both verified producing alerts in the dashboard:
 
-1. **Host-based** — the Wazuh agent ships `nginx` access/error logs and
+1. **Host-based**: the Wazuh agent ships `nginx` access/error logs and
    system logs (`/var/log/auth.log`) to the SIEM. Web attack URLs (SQLi
    patterns in query strings) are visible here.
-2. **Network-based** — Suricata 8.x inspects traffic on the target's NIC
+2. **Network-based**: Suricata 8.x inspects traffic on the target's NIC
    with ~53k Emerging Threats signatures. In a VirtualBox host-only network
    a VM only sees its own traffic, so the IDS lives on the victim itself
    (host-based IDS deployment). Alerts land in `eve.json` and flow through
    the same Wazuh agent.
 
 Any single attack from Kali can therefore surface as two alerts in two
-different data sources — the core exercise for L1 correlation.
+different data sources. That's the core exercise for L1 correlation.
 
 ## Deliberate weaknesses
 

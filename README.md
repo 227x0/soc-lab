@@ -2,7 +2,7 @@
 
 Documentation of the home SOC lab this repository's cases are produced in.
 
-This is not a write-up of one attack — it is the standing infrastructure:
+This isn't a write-up of one attack. It's the standing infrastructure:
 how the network is laid out, what runs on each VM, how detection is wired,
 and how to keep the whole thing alive.
 
