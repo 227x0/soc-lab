@@ -55,9 +55,14 @@ This emulates the ticket queue L1 works from.
 
 ## Clock sync
 
-Lab VMs drift after the host sleeps or VMs are paused (observed 2026-11-14:
-u1/u3 ran ~4 days behind, which broke `apt` ("Release file not valid
-yet") and would silently corrupt log correlation in the SIEM).
+Fixed properly on 2026-11-15: `virtualbox-guest-utils` is installed on u1
+and u3, so VBoxService keeps guest time synced with the host continuously,
+even after the host sleeps. Before this, u1/u3 only got time at VM
+power-on and drifted badly (observed 2026-11-14: ~4 days behind, which
+broke `apt` with "Release file not valid yet" and would silently corrupt
+log correlation in the SIEM).
+
+Manual procedure below stays as a fallback and for checking.
 
 ```bash
 timedatectl                          # check
