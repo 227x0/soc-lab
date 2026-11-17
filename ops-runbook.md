@@ -75,6 +75,22 @@ sudo timedatectl set-ntp true
 
 Verify all three hosts agree within a minute before any timed exercise.
 
+## Windhawk vs VirtualBox (known conflict)
+
+Windhawk injects its engine DLL into new processes; VirtualBox's process
+hardening rejects that and the VM dies at startup (`Error -5637 in
+supR3HardNtChildPurify`, exit code 1). Exclusion lists do not help — the
+injection itself is the problem.
+
+Resolution: the Windhawk service is set to **Manual** and stays stopped
+while the lab runs. To get the macOS window buttons back: start Windhawk
+from Start menu when done with the lab (windows keep the painted glyphs
+until dwm restarts, so the look survives a Windhawk stop).
+
+Lab start/stop goes through `start-lab-vms.cmd` in the user's Startup
+folder (u1 -> u3 -> Kali, headless). After any Windows update that
+re-enables services, check `Get-Service Windhawk`.
+
 ## Weekly
 
 - `docker compose restart` on u1 (memory hygiene),
