@@ -1,0 +1,4 @@
+id,date_utc,title,src_ip,severity,verdict,status,runbook,notes
+INC-2026-0001,2026-11-19T00:26Z,SSH brute-force drill (hydra 12 wrong passwords),192.168.100.20,L10,TP-no-success,closed,rb-ssh-bruteforce,"pipeline test; 0 emails due to level 12 threshold (fixed to 9)"
+INC-2026-0002,2026-11-19T05:52Z,SQLi search probe (GET /rest/products/search?q=' OR 1=1--),192.168.100.20,L12,TP-contained,closed,rb-web-attack,"email alert delivered to /var/mail/u1; pipeline verified end-to-end"
+INC-2026-0003,2026-11-18T23:04Z,DNS exfiltration exercise (13 chunks to exfil.lab),192.168.100.20,L-none-found,P2,case-open,rb-dns-anomaly,"no alert fired; found manually in wazuh-archives; case SOC-2026-004"
