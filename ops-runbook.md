@@ -96,3 +96,11 @@ re-enables services, check `Get-Service Windhawk`.
 - `docker compose restart` on u1 (memory hygiene),
 - check `df -h /` trend,
 - confirm both agents show Active in the dashboard's Endpoints Summary.
+
+## Hunt hygiene: time normalization
+
+Lesson from SOC-2026-005: before any hunt, verify (a) host clock timezone
+(u3 runs UTC) and (b) dashboard rendering TZ (CET, UTC+1) — and normalize
+everything to UTC. A one-hour offset silently invalidated the first
+file-window searches (`find -newermt`, `ausearch --start`). Rule: if a hunt
+finds nothing, check the clocks before concluding "no evidence".
